@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 8001;
+const PORT = process.env.PORT || 3000;
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const BusDetailsRouter = require("./routes/busDetails");
@@ -14,6 +14,7 @@ app.use(cors());
 
 app.use(BusDetailsRouter);
 
+mongoose.set("strictQuery", false);
 mongoose
   .connect(URL, { useNewUrlParser: true })
   .then((res) => console.log("connected to the database"))
